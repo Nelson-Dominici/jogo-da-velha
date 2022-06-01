@@ -7,34 +7,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
 
-    <div class="contain_scoreboard">
+    <section class="game_contain">
 
-        <div class="x_scoreboard">
-            <p id="iconX_scoreboard">x</p>
-            <p id="x_pontos">0</p>
+        <section class="reset_contain">
+            <h1 id="quem_ganhou"></h1>
+            <button id="close_btn">Repitir</button>
+            <button id="reset_btn">Resetar</button>
+        </section>
+
+        <div class="contain_scoreboard">
+
+            <div class="x_scoreboard">
+                <img id="man_scoreboard" src="images/man.png" width="30px" height="30px">
+                <p id="x_pontos">0</p>
+            </div>
+
+            <div class="o_scoreboard">
+                <p id="o_pontos">0</p>
+                <img id="woman_scoreboard" src="images/woman.png" width="30px" height="30px">
+            </div>
+
         </div>
 
-        <div class="o_scoreboard">
-            <p id="o_pontos">0</p>
-            <p id="iconO_scoreboard">o</p>
-        </div>
+        <section class="contain-quares">
+            <section id="0" class="square"></section>
+            <section id="1" class="square"></section>
+            <section id="2" class="square"></section>
+            <section id="3" class="square"></section>
+            <section id="4" class="square"></section>
+            <section id="5" class="square"></section>
+            <section id="6" class="square"></section>
+            <section id="7" class="square"></section>
+            <section id="8" class="square"></section>
+        </section>
 
-    </div>
+    </section>
 
-    <section class="contain-quares">
-        <section id="0" class="square"></section>
-        <section id="1" class="square"></section>
-        <section id="2" class="square"></section>
-        <section id="3" class="square"></section>
-        <section id="4" class="square"></section>
-        <section id="5" class="square"></section>
-        <section id="6" class="square"></section>
-        <section id="7" class="square"></section>
-        <section id="8" class="square"></section>
+    <img id="before_page" src="images/back.png" width="55px" height="55px">
+
+    <section class="contain_select">
+        <h1 id="jogo">Jogo da velha</h1>
+
+        <section class="select_game">
+
+            <div class="div_player_vp">
+
+                <img src="images/man.png" width="45px" height="45px">
+                <h1>VS</h1>
+                <img src="images/woman.png" width="45px" height="45px">
+
+            </div>
+
+            <div class="div_player_vb">
+
+                <img src="images/man.png" width="45px" height="45px">
+                <h1>VS</h1>
+                <img src="images/robot.png" width="40px" height="40px">
+
+            </div>
+
+        </section>
+
     </section>
 
     <script src="assets/game.js"></script>

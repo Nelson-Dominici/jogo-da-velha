@@ -4,7 +4,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+body {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -13,34 +13,42 @@ body{
     justify-content: center
 }
 
-.contain-quares{
-    display: grid;
-    grid-gap: 15px;
-    cursor: pointer;
-    grid-template-columns:135px 135px 135px;
-    grid-template-rows: 135px 135px 135px ;
+.game_contain {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center
 }
 
-.square{
+
+.contain-quares {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 135px 135px 135px;
+    grid-template-rows: 135px 135px 135px;
+}
+
+.square {
     width: 135px;
     height: 135px;
-    color: #191d27;
+    color: #008EA9;
     display: flex;
     font-size: 115px;
     align-items: center;
     justify-content: center;
     border: 5px solid #222835;
     background-color: #2F384B;
+    cursor: pointer;
 }
 
-.contain_scoreboard{
+.contain_scoreboard {
     display: flex;
     justify-content: space-between;
     width: 500px;
     margin-bottom: 30px;
 }
 
-.contain_scoreboard div{
+.contain_scoreboard div {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -49,12 +57,101 @@ body{
     border: 5px solid #222835;
     color: #202530;
     font-size: 35px;
-}  
+}
 
-#iconX_scoreboard,#x_pontos,#iconO_scoreboard,#o_pontos{
+#iconX_scoreboard,
+#x_pontos,
+#iconO_scoreboard,
+#o_pontos {
     font-weight: 600;
 }
 
-#iconX_scoreboard{margin-right: 15px;}
+.reset_contain {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    width: 270px;
+    height: 250px;
+    background-color: #20253067;
+    color: #0d0f13;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    border: 5px solid #1a1e29c0;
+}
 
-#iconO_scoreboard{ margin-left: 15px;}
+.reset_contain button {
+    width: 90px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 2px;
+    background-color: #1f2530;
+    color: white;
+    border: none;
+    margin-top: 10px;
+}
+
+.reset_contain h1 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+#man_scoreboard {
+    margin-right: 15px;
+}
+
+#woman_scoreboard {
+    margin-left: 15px;
+}
+
+/* contain game */
+
+.contain_select{
+    display: flex;
+    align-items: center;
+    background-color: #2F384B;
+    flex-direction: column;
+    justify-content: center
+}
+
+#jogo{
+    color: #1b212e;
+    font-size: 80px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.select_game{
+    margin-top: 30px;
+}
+
+.select_game div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    background-color:#222835;
+    margin-top: 20px;
+    width: 250px;
+    height: 80px;
+    color: #2F384B;
+    cursor: pointer;
+}
+
+.select_game div h1{
+    font-weight: 550;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#before_page{
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    left: 20px;
+    top: 10px;
+}

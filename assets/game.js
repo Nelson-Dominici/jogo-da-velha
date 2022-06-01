@@ -17,12 +17,30 @@ let players = ["o", "x"]
 
 function select_inner(pos) {
     let squares = document.querySelectorAll(".square")
-    squares[pos].innerHTML = pos_array[pos]
+
+    if (vez == 0) {
+        let man = document.createElement("img");
+
+        man.src = "images/man.png";
+        man.style.width = "70px"
+        man.style.height = "70px"
+
+        squares[pos].appendChild(man)
+    }
+    else {
+        let woman = document.createElement("img");
+
+        woman.src = "images/woman.png";
+        woman.style.width = "70px"
+        woman.style.height = "70px"
+
+        squares[pos].appendChild(woman)
+    }
+
+    // mudar avatar
 
     check_func()
 }
-
-
 
 function check_func() {
     for (let win_pos of pos_winner) {
@@ -35,16 +53,18 @@ function check_func() {
             pos_array[pos_1] == pos_array[pos_3] &&
             pos_array[pos_1] != "") {
 
-            winner = true
-
-            if (vez == 0) {
-                x_number++
-                x_inner.innerHTML = x_number
-            }
-            else {
+            if (vez == 1) {
                 o_number++
                 o_inner.innerHTML = o_number
             }
+            else if (vez == 0) {
+                x_number++
+                x_inner.innerHTML = x_number
+            }
+
+            winner = true
+            open_window()
+
         }
 
     }
