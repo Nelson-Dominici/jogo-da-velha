@@ -18,31 +18,62 @@ let players = ["o", "x"]
 function select_inner(pos) {
     let squares = document.querySelectorAll(".square")
 
-    if (vez == 0) {
+    if (pvp) {
+
+        if (vez == 0) {
+            let man = document.createElement("img");
+
+            man.src = "images/man.png";
+            man.style.width = "70px"
+            man.style.height = "70px"
+
+            squares[pos].appendChild(man)
+        }
+
+        else {
+            let woman = document.createElement("img");
+
+            woman.src = "images/woman.png";
+            woman.style.width = "70px"
+            woman.style.height = "70px"
+
+            squares[pos].appendChild(woman)
+        }
+    }
+
+    else {
         let man = document.createElement("img");
+        let boot = document.createElement("img");
 
         man.src = "images/man.png";
         man.style.width = "70px"
         man.style.height = "70px"
 
+        boot.src = "images/robot.png";
+        boot.style.width = "70px"
+        boot.style.height = "70px"
+
         squares[pos].appendChild(man)
+
+        if (boot_vez) {
+
+            setTimeout(() => {
+                squares[boot_pos].appendChild(boot)
+            }, 50);
+        }
+
+
     }
-    else {
-        let woman = document.createElement("img");
-
-        woman.src = "images/woman.png";
-        woman.style.width = "70px"
-        woman.style.height = "70px"
-
-        squares[pos].appendChild(woman)
-    }
-
-    // mudar avatar
-
-    check_func()
 }
 
 function check_func() {
+
+    if((pos_array.find(elem => elem == "") == undefined)){
+        empate = true
+        open_window()
+    }
+
+
     for (let win_pos of pos_winner) {
 
         let pos_1 = win_pos[0]
@@ -53,19 +84,23 @@ function check_func() {
             pos_array[pos_1] == pos_array[pos_3] &&
             pos_array[pos_1] != "") {
 
-            if (vez == 1) {
-                o_number++
-                o_inner.innerHTML = o_number
-            }
-            else if (vez == 0) {
+            if (pos_array[pos_1] == "o") {
                 x_number++
                 x_inner.innerHTML = x_number
+                boot_vez = false
+            }
+
+            else if (pos_array[pos_1] == "x") {
+                o_number++
+                o_inner.innerHTML = o_number
+                boot_vez = true
             }
 
             winner = true
             open_window()
-
         }
 
     }
+
 }
+

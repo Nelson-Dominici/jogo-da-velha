@@ -6,6 +6,13 @@ window.addEventListener("DOMContentLoaded", () => {
     })
 })
 
+let empate = false
+let pvp = null
+let boot_pos = null
+let boot_vez = true
+
+let random_numbers = []
+
 let contain_select = document.querySelector(".contain_select")
 
 let before_page = document.querySelector("#before_page")
@@ -29,16 +36,43 @@ function dial_function(e) {
 
     if (pos_array[pos] == "" && winner == false) {
 
-        pos_array[pos] = players[vez]
-
-        if (vez == 0) {
-            vez = 1
+        if (pvp) {
+            if (vez == 0) {
+                vez = 1
+                pos_array[pos] = players[vez]
+            }
+            else {
+                vez = 0
+                pos_array[pos] = players[vez]
+            }
         }
-        else if (vez == 1) {
+
+        else {
             vez = 0
+            pos_array[pos] = players[vez]
+
+            if (boot_vez) {
+                random_pos()
+
+                let length_randow = Math.floor(Math.random() * random_numbers.length)
+                boot_pos = random_numbers[length_randow];
+                pos_array[boot_pos] = "x"
+            }
         }
 
-        select_inner(e.target.id)
+        check_func()
+        select_inner(e.target.id, boot_pos)
+    }
+}
+
+function random_pos() {
+    random_numbers = []
+    boot_pos = null
+
+    for (let random in pos_array) {
+        if (pos_array[random] == "") {
+            random_numbers.push(random)
+        }
     }
 }
 
@@ -51,12 +85,13 @@ function back_to_selection() {
     contain_select.style.display = "flex"
 }
 
-
 function close_window() {
     let winner_inner = document.querySelector("#quem_ganhou")
     pos_array = ["", "", "", "", "", "", "", "", ""]
     winner_inner.innerHTML = ""
+    boot_vez = true
     winner = false
+    empate = false
     vez = 1
 
     let squares = document.querySelectorAll(".square")
@@ -70,6 +105,7 @@ function close_window() {
 }
 
 function reset_scoreboard() {
+    boot_vez = true
     x_number = 0
     o_number = 0
 
@@ -79,10 +115,22 @@ function reset_scoreboard() {
     close_window()
 }
 
-function open_game() {
+function open_game_pvp() {
+    pvp = true
     before_page.style.display = "block"
     game_contain.style.display = "flex"
     contain_select.style.display = "none"
+
+    document.querySelector("#woman_scoreboard").src = "images/woman.png"
+}
+
+function open_game_pvb() {
+    pvp = false
+    before_page.style.display = "block"
+    game_contain.style.display = "flex"
+    contain_select.style.display = "none"
+
+    document.querySelector("#woman_scoreboard").src = "images/robot.png"
 }
 
 function open_window() {
@@ -92,31 +140,68 @@ function open_window() {
 
     window.style.display = "flex"
 
-    if (vez == 0) {
-        let man = document.createElement("img");
+    if(empate){
+        let empate = document.createElement("img");
 
-        man.src = "images/man.png";
-        man.style.width = "55px"
-        man.style.height = "55px"
+        empate.src = "images/handshake.png";
+        empate.style.width = "55px"
+        empate.style.height = "55px"
 
-        winner_inner.appendChild(man)
+        winner_inner.appendChild(empate)
     }
+
+    else if (pvp) {
+        if (vez == 0) {
+            let man = document.createElement("img");
+
+            man.src = "images/man.png";
+            man.style.width = "55px"
+            man.style.height = "55px"
+
+            winner_inner.appendChild(man)
+        }
+        else {
+            let woman = document.createElement("img");
+
+            woman.src = "images/woman.png";
+            woman.style.width = "55px"
+            woman.style.height = "55px"
+
+            winner_inner.appendChild(woman)
+        }
+    }
+
     else {
-        let woman = document.createElement("img");
 
-        woman.src = "images/woman.png";
-        woman.style.width = "55px"
-        woman.style.height = "55px"
+        if (boot_vez) {
+            let boot = document.createElement("img");
 
-        winner_inner.appendChild(woman)
+            boot.src = "images/robot.png";
+            boot.style.width = "55px"
+            boot.style.height = "55px"
+
+            winner_inner.appendChild(boot)
+        }
+
+        else {
+            let man = document.createElement("img");
+
+            man.src = "images/man.png";
+            man.style.width = "55px"
+            man.style.height = "55px"
+
+            winner_inner.appendChild(man)
+        }
     }
+
 
     squares.forEach(function callback(square) {
         square.style.cursor = "default"
     })
 }
 
-btn_to_pvp.addEventListener("click", open_game)
+btn_to_pvb.addEventListener("click", open_game_pvb)
+btn_to_pvp.addEventListener("click", open_game_pvp)
 btn_close.addEventListener("click", close_window)
 reset_btn.addEventListener("click", reset_scoreboard)
 before_page.addEventListener("click", back_to_selection)

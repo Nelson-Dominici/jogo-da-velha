@@ -111,7 +111,7 @@ body {
 
 /* contain game */
 
-.contain_select{
+.contain_select {
     display: flex;
     align-items: center;
     background-color: #2F384B;
@@ -119,22 +119,22 @@ body {
     justify-content: center
 }
 
-#jogo{
+#jogo {
     color: #1b212e;
     font-size: 80px;
     font-family: 'Dancing Script', cursive;
 }
 
-.select_game{
+.select_game {
     margin-top: 30px;
 }
 
-.select_game div{
+.select_game div {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 3px;
-    background-color:#222835;
+    background-color: #222835;
     margin-top: 20px;
     width: 250px;
     height: 80px;
@@ -142,16 +142,64 @@ body {
     cursor: pointer;
 }
 
-.select_game div h1{
+.select_game div h1 {
     font-weight: 550;
     margin-left: 15px;
     margin-right: 15px;
 }
 
-#before_page{
+#before_page {
     display: none;
     position: absolute;
     cursor: pointer;
     left: 20px;
     top: 10px;
+}
+
+@media screen and (max-width: 466px) {
+    #jogo {font-size: 65px}    
+}
+
+@media screen and (max-width: 598px) {
+    .contain_scoreboard {width: 85vw}
+
+    .square{
+        width: 115px;
+        height: 115px;
+    }
+
+    .contain-quares{
+        grid-template-columns: 115px 115px 115px;
+        grid-template-rows: 115px 115px 115px;
+    }
+
+}
+
+@media screen and (max-width: 466px) {
+    .square{
+        width: 95px;
+        height: 95px;
+    }
+
+    .contain-quares{
+        grid-template-columns: 95px 95px 95px;
+        grid-template-rows: 95px 95px 95px;
+    }
+}
+
+@media screen and (max-width: 374px) {
+
+    #jogo {
+        font-size: 50px;
+    }
+
+    .square{
+        width: 80px;
+        height: 80px;
+    }
+
+    .contain-quares{
+        grid-template-columns: 80px 80px 80px;
+        grid-template-rows: 80px 80px 80px;
+    }
 }
