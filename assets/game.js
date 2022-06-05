@@ -68,12 +68,6 @@ function select_inner(pos) {
 
 function check_func() {
 
-    if((pos_array.find(elem => elem == "") == undefined)){
-        empate = true
-        open_window()
-    }
-
-
     for (let win_pos of pos_winner) {
 
         let pos_1 = win_pos[0]
@@ -102,5 +96,10 @@ function check_func() {
 
     }
 
+    if (!winner) {
+        if ((pos_array.find(elem => elem == "") == undefined)) {
+            empate = true
+            open_window()
+        }
+    }
 }
-
