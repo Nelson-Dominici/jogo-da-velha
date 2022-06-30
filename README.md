@@ -2,7 +2,7 @@
 <h1 align="center" ><b>Jogo da Velha</b></h1><div>
 
 <h1>🚀Sobre</h1>
-    <h2>Um jogo da velha programado com pra jogar pvp ou com um boot</h2>
+    <h2>Um jogo da velha programado pra jogar pvp ou com um boot</h2>
 
 ### 📋Features
 
